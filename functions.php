@@ -135,7 +135,7 @@ add_action( 'widgets_init', 'bring_back_widgets_init' );
  * Bring Back
  * Widget
  */
-require get_template_directory() . '/plugin/social.php';
+require get_template_directory() . '/inc/social.php';
 
 /**
  * Enqueue scripts and styles.
@@ -176,29 +176,6 @@ function bring_back_scripts() {
 add_action( 'wp_enqueue_scripts', 'bring_back_scripts' );
 
 /**
- * Elementor widgets
- */
-function bring_back_elementor_widgets() {
-
-    if ( defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base') ) {
-        require get_template_directory() . '/plugin/post-type.php';
-        require get_template_directory() . '/plugin/text-block.php';
-        require get_template_directory() . '/plugin/text-with-image.php';
-        require get_template_directory() . '/plugin/testimonial.php';
-        require get_template_directory() . '/plugin/pricing-table.php';
-        require get_template_directory() . '/plugin/tabs.php';
-        require get_template_directory() . '/plugin/slideshow.php';
-        require get_template_directory() . '/plugin/info-box.php';
-        require get_template_directory() . '/plugin/team.php';
-
-        if( class_exists('bring_back_Toolkit') ) {
-            require get_template_directory() . '/plugin/services-post-type.php';
-        }
-    }
-}
-add_action( 'elementor/widgets/widgets_registered', 'bring_back_elementor_widgets' );
-
-/**
  * Scripts and styles for the Page Builder plugin
  */
 function bring_back_admin_script() {
@@ -210,23 +187,6 @@ function bring_back_admin_script() {
     }
 }
 add_action( 'admin_enqueue_scripts', 'bring_back_admin_script' );
-
-/**
- * @param $elements_manager
- * elementor Category Name
- */
-function bring_back_elementor_widget_categories( $elements_manager ) {
-
-    $elements_manager->add_category(
-        'bring_back',
-        array(
-            'title' => __( 'Bring Back Widgets', 'bring-back' ),
-            'icon' => 'fa fa-plug',
-        )
-    );
-
-}
-add_action( 'elementor/elements/categories_registered', 'bring_back_elementor_widget_categories' );
 
 /**
  * Style Variable
@@ -288,26 +248,6 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' )) {
 }
 
 /**
- * Kirki Plugin Admin Notice Dismiss
- */
-add_action( 'admin_notices', 'bring_back_plugin_dismiss_notice' );
-function bring_back_plugin_dismiss_notice() {
-    global  $pagenow;
-    if( $pagenow == 'customize.php' ) :
-        $user_id = get_current_user_id();
-        if ( !get_user_meta( $user_id, 'bring_back_kirki_plugin_dismissed' ) )
-            echo '<p class="dismiss-button"><a href="?bring_back_kirki_dismissed">'.esc_html( 'Dismiss' ).'</a></p>';
-    endif;
-}
-add_action( 'admin_init', 'bring_back_kirki_plugin_dismissed' );
-
-function bring_back_kirki_plugin_dismissed() {
-    $user_id = get_current_user_id();
-    if ( isset( $_GET['bring_back_kirki_dismissed'] ) )
-        add_user_meta( $user_id, 'bring_back_kirki_plugin_dismissed', 'true', true );
-}
-
-/**
  *TGM Plugin activation.
  */
 require_once dirname( __FILE__ ) . '/inc/class-tgm-plugin-activation.php';
@@ -326,6 +266,15 @@ function bring_back_active_plugins() {
             'name'      => __( 'Elementor Page Builder', 'bring-back' ),
             'slug'      => 'elementor',
             'required'  => false,
+        ),
+        array(
+            'name'      => __( 'Bring Back Core', 'bring-back' ),
+            'source' => get_template_directory_uri() . '/plugin/bring-back-core.zip',
+            'required' => true,
+            'version' => '1.0.0',
+            'force_activation' => false,
+            'force_deactivation' => false,
+            'external_url' => '',
         ),
         array(
             'name'      => __( 'kirki Customizer', 'bring-back' ),
