@@ -269,7 +269,7 @@ function bring_back_active_plugins() {
         ),
         array(
             'name'      => __( 'Bring Back Core', 'bring-back' ),
-            'source' => get_template_directory_uri() . '/plugin/bring-back-core.zip',
+            'source' => 'https://github.com/Moklesur/bring-back-core/archive/main.zip',
             'required' => true,
             'version' => '1.0.0',
             'force_activation' => false,
