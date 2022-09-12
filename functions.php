@@ -271,6 +271,8 @@ function bring_back_active_plugins() {
             'name'   => __( 'Bring Back Core', 'bring-back' ),
             'slug'   => 'bring-back-core',
             'source' => 'https://github.com/Moklesur/bring-back-core/archive/main.zip',
+            'required'     => true, // If false, the plugin is only 'recommended' instead of required.
+            'external_url' => 'https://github.com/Moklesur/bring-back-core',
         ),
         array(
             'name'      => __( 'kirki Customizer', 'bring-back' ),
