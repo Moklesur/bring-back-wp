@@ -268,13 +268,9 @@ function bring_back_active_plugins() {
             'required'  => false,
         ),
         array(
-            'name'      => __( 'Bring Back Core', 'bring-back' ),
+            'name'   => __( 'Bring Back Core', 'bring-back' ),
+            'slug'   => 'bring-back-core',
             'source' => 'https://github.com/Moklesur/bring-back-core/archive/main.zip',
-            'required' => true,
-            'version' => '1.0.0',
-            'force_activation' => false,
-            'force_deactivation' => false,
-            'external_url' => '',
         ),
         array(
             'name'      => __( 'kirki Customizer', 'bring-back' ),
