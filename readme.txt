@@ -4,7 +4,7 @@ Contributors: themetim
 Requires at least: 4.5
 Tested up to: 5.2.2
 Requires PHP: 5.4
-Stable tag: 1.0
+Stable tag: 1.17
 Tags: blog, custom-background, custom-colors, custom-logo, custom-menu, translation-ready, theme-options, threaded-comments, custom-logo, footer-widgets, custom-header, featured-image-header, full-width-template, left-sidebar, right-sidebar
 
 == License ==
@@ -25,6 +25,11 @@ Does this theme support any plugins?
 -> Contact Form 7, Elementor page builder, Page Builder by SiteOrigin and many more.
 
 == Changelog ==
+
+= 1.17 - Sep 12 2022 =
+* Bug fix
+* Elementor update version compatiblity
+* Bring Back Core added
 
 = 1.16 - Mar 30 2020 =
 * Added blogLayout
